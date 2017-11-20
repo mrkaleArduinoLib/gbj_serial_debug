@@ -1,0 +1,32 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+SERIAL_ACTION	KEYWORD2
+SERIAL_BEGIN	KEYWORD2
+SERIAL_F	KEYWORD2
+SERIAL_LOG1	KEYWORD2
+SERIAL_LOG2	KEYWORD2
+SERIAL_LOG3	KEYWORD2
+SERIAL_LOG4	KEYWORD2
+SERIAL_LOG5	KEYWORD2
+SERIAL_LOG6	KEYWORD2
+SERIAL_TITLE	KEYWORD2
+SERIAL_VALUE	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+GBJ_SERIAL_DEBUG_VERSION	LITERAL1
+SERIAL_DEBUG	LITERAL1
+SERIAL_NODEBUG	LITERAL1
+SERIAL_DELIM	LITERAL1
+SERIAL_DOT	LITERAL1
+SERIAL_LINE	LITERAL1
