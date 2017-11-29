@@ -12,7 +12,7 @@
   CREDENTIALS:
   Author: Libor Gabaj
 */
-#define SKETCH "GBJ_SERIAL_DEBUG-DEMO 1.0.0"
+#define SKETCH "GBJ_SERIAL_DEBUG_DEMO 1.0.0"
 
 // #define SERIAL_DEBUG
 // #define SERIAL_NODEBUG
@@ -35,6 +35,7 @@ void loop()
     SERIAL_VALUE("Round", i)
     delay(1000);
   }
+  //
   SERIAL_ACTION("TEST - Long action")
   for (byte i = 0; i < 5; i++)
   {
@@ -42,5 +43,9 @@ void loop()
     delay(500);
   }
   SERIAL_TITLE("completed")
+  //
+  SERIAL_TITLE("TEST - Chaining")
+  SERIAL_CHAIN4(1, "/", 2, "/")
+  SERIAL_TITLE("3")
   SERIAL_LINE
 }

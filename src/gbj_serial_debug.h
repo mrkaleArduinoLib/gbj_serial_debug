@@ -41,6 +41,13 @@
   #define SERIAL_LOG5(p1, p2, p3, p4, p5)     { Serial.print(p1); Serial.print(p2); Serial.print(p3); Serial.print(p4); Serial.println(p5); }
   #define SERIAL_LOG6(p1, p2, p3, p4, p5, p6) { Serial.print(p1); Serial.print(p2); Serial.print(p3); Serial.print(p4); Serial.print(p5); Serial.println(p6); }
   //
+  #define SERIAL_CHAIN1(p1)                     { Serial.print(p1); }
+  #define SERIAL_CHAIN2(p1, p2)                 { Serial.print(p1); Serial.print(p2); }
+  #define SERIAL_CHAIN3(p1, p2, p3)             { Serial.print(p1); Serial.print(p2); Serial.print(p3); }
+  #define SERIAL_CHAIN4(p1, p2, p3, p4)         { Serial.print(p1); Serial.print(p2); Serial.print(p3); Serial.print(p4); }
+  #define SERIAL_CHAIN5(p1, p2, p3, p4, p5)     { Serial.print(p1); Serial.print(p2); Serial.print(p3); Serial.print(p4); Serial.print(p5); }
+  #define SERIAL_CHAIN6(p1, p2, p3, p4, p5, p6) { Serial.print(p1); Serial.print(p2); Serial.print(p3); Serial.print(p4); Serial.print(p5); Serial.print(p6); }
+  //
   #define SERIAL_LINE                         { Serial.println(); }
   #define SERIAL_BEGIN(b)                     { Serial.begin(b); while(!Serial) { }; SERIAL_LINE }
   #define SERIAL_TITLE(s)                     { SERIAL_LOG1(SERIAL_F(s)) }
@@ -55,6 +62,13 @@
   #define SERIAL_LOG4(p1, p2, p3, p4)
   #define SERIAL_LOG5(p1, p2, p3, p4, p5)
   #define SERIAL_LOG6(p1, p2, p3, p4, p5, p6)
+  //
+  #define SERIAL_CHAIN1(p1)
+  #define SERIAL_CHAIN2(p1, p2)
+  #define SERIAL_CHAIN3(p1, p2, p3)
+  #define SERIAL_CHAIN4(p1, p2, p3, p4)
+  #define SERIAL_CHAIN5(p1, p2, p3, p4, p5)
+  #define SERIAL_CHAIN6(p1, p2, p3, p4, p5, p6)
   //
   #define SERIAL_LINE
   #define SERIAL_BEGIN(b)
