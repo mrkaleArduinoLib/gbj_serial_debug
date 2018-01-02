@@ -6,8 +6,7 @@ Library defines preprocessor macro functions for serial debugging and writing to
 <a id="constants"></a>
 ## Constants
 - **GBJ\_SERIAL\_DEBUG\_VERSION**: Name and semantic version of the library.
-- **SERIAL\_DEBUG**: Defined this debugging macro determines, whether serial debugging should be used.
-- **SERIAL\_NODEBUG**: Defined this debugging macro determines, that serial debugging should not be used. Definition of the previous macro constant has precedence.
+- **SERIAL\_NODEBUG**: Defined this debugging macro determines, that serial debugging should not be used.
 
 *The debugging macros should be defined before inclusion of the library header file in a sketch in order to take them into effect.*
 
@@ -45,7 +44,8 @@ Remaining constants are listed in the library include file. They are used mostly
 #### Debug macros
 - **SERIAL\_TITLE(s)**: Flashes input string and prints it on the separate line with EOL, e.g., `SEND_TITLE("Start")`.
 - **SERIAL\_ACTION(s)**: Flashes input string and prints it on the separate line without EOL. It is useful when another printing on the same line is expected, e.g., by waiting on connection and signaling it by dots.
-- **SERIAL\_VALUE(k, v)**: Flashes and prints the first string parameter and follows it with second parameter with EOL, e.g., `SEND_VALUE("Value", 85)`. The macro adds colon and space after the first parameter and forms key-value pair output.
+- **SERIAL\_VALUE(k, v)**: Flashes and prints the first string parameter (key) and follows it with second parameter (value) with EOL, e.g., `SEND_VALUE("Value", 85)`. The macro adds colon and space after the first parameter and forms key-value pair output.
+- **SERIAL\_VALUE\_UNIT(k, v, u)**: Flashes and prints the first string parameter (key), follows it with second parameter (value), and appends the third string parameter (unit) with EOL, e.g., `SEND_VALUE_UNIT("Value", 85, "degC")`. The macro adds colon and space after the first parameter, space before the last parameter, and forms key-value-unit output.
 
 #### Decoration macros
 - **SERIAL\_LINE**: Prints empty line with EOL separating printing sections, e.g., `SERIAL_LINE`.

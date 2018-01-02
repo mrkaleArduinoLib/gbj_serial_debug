@@ -33,7 +33,7 @@
   #define SERIAL_F(s) s
 #endif
 
-#if defined(SERIAL_DEBUG) || !defined(SERIAL_NODEBUG)
+#if !defined(SERIAL_NODEBUG)
   #define SERIAL_LOG1(p1)                     { Serial.println(p1); }
   #define SERIAL_LOG2(p1, p2)                 { Serial.print(p1); Serial.println(p2); }
   #define SERIAL_LOG3(p1, p2, p3)             { Serial.print(p1); Serial.print(p2); Serial.println(p3); }
@@ -51,7 +51,8 @@
   #define SERIAL_LINE                         { Serial.println(); }
   #define SERIAL_BEGIN(b)                     { Serial.begin(b); while(!Serial) { }; SERIAL_LINE }
   #define SERIAL_TITLE(s)                     { SERIAL_LOG1(SERIAL_F(s)) }
-  #define SERIAL_VALUE(k, v)                  { SERIAL_LOG3(SERIAL_F(k),SERIAL_F(": "), v) }
+  #define SERIAL_VALUE(k, v)                  { SERIAL_LOG3(SERIAL_F(k), SERIAL_F(": "), v) }
+  #define SERIAL_VALUE_UNIT(k, v, u)          { SERIAL_LOG5(SERIAL_F(k), SERIAL_F(": "), v, SERIAL_F(" "), SERIAL_F(u)) }
   #define SERIAL_DELIM                        { SERIAL_TITLE("---") }
   #define SERIAL_ACTION(s)                    { Serial.print(SERIAL_F(s)); }
   #define SERIAL_DOT                          { Serial.print(SERIAL_F(".")); }
@@ -74,6 +75,7 @@
   #define SERIAL_BEGIN(b)
   #define SERIAL_TITLE(s)
   #define SERIAL_VALUE(k, v)
+  #define SERIAL_VALUE_UNIT(k, v, u)
   #define SERIAL_DELIM
   #define SERIAL_ACTION(s)
   #define SERIAL_DOT

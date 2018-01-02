@@ -14,7 +14,6 @@
 */
 #define SKETCH "GBJ_SERIAL_DEBUG_DEMO 1.0.0"
 
-// #define SERIAL_DEBUG
 // #define SERIAL_NODEBUG
 #include "gbj_serial_debug.h"
 
@@ -33,6 +32,7 @@ void loop()
   for (byte i = 1; i <= 5; i++)
   {
     SERIAL_VALUE("Round", i)
+    SERIAL_VALUE_UNIT("Length", i, "m")
     delay(1000);
   }
   //
