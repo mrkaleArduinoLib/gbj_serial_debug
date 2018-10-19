@@ -26,6 +26,9 @@
   #endif
   #include <inttypes.h>
   #define SERIAL_F(s) F(s)
+#elif defined(ESP8266) || defined(ESP32)
+  #include <Arduino.h>
+  #define SERIAL_F(s) F(s)
 #elif defined(PARTICLE)
   #include <Particle.h>
   #define SERIAL_F(s) s
