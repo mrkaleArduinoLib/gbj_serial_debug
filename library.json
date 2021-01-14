@@ -1,5 +1,5 @@
 {
-  "name": "gbjSerialDebug",
+  "name": "gbj_serial_debug",
   "keywords": "debug",
   "description": "Library defines preprocesor macro functions for serial debuging prefixed with 'SERIAL_'.",
   "repository": {
