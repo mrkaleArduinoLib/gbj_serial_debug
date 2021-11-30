@@ -8,16 +8,18 @@ Library defines preprocessor macro functions for serial debugging and writing to
 
 - **GBJ\_SERIAL\_DEBUG\_VERSION**: Name and semantic version of the library.
 - **SERIAL\_NODEBUG**: Defining this macro determines, that serial debugging should not be used.
-- **SERIAL\_PREFIX**: Macro defines a string, that is prefixed to logging outputs with internally define separator, which is `::`. The macro is useful for debugging output in application libraries. In order to avoid compilation warnings about redefining this macro, it is usefull to undefine it right before defining it again for the desired prefix.
+- **SERIAL\_PREFIX**: Macro defines a string, that is prefixed to logging outputs with internally define separator, which is `::`.
+  - The macro is useful for debugging output in application libraries.
+  - It is useful to define default prefix `main` within project macros, e.g., in case of PlatformIO in the project file `.platformio`.
+  - In order to avoid compilation warnings about redefining this macro, it is usefull to undefine it right before defining it again for the desired prefix.
 
-> The debugging macros should be defined before inclusion of the library header file in a sketch in order to take them into effect.
+> The debugging macros should be defined after inclusion of the library header file in a sketch in order to take them into effect.
 
 ```cpp
-//#define SERIAL_NODEBUG
+#include "gbj_serial_debug.h"
+...
 #undef SERIAL_PREFIX
 #define SERIAL_PREFIX "mylib"
-...
-#include "gbj_serial_debug.h"
 ```
 
 
@@ -55,7 +57,8 @@ Library defines preprocessor macro functions for serial debugging and writing to
 #### Debug macros
 - **SERIAL\_TITLE(s)**: Flashes input string and prints it on the separate line with EOL, e.g., `SEND_TITLE("Start")`.
 - **SERIAL\_ACTION(s)**: Flashes input string and prints it on the separate line without EOL. It is useful when another printing on the same line is expected, e.g., by waiting on connection and signaling it by dots.
-- **SERIAL\_ACTION\_END(s)**: Continues by flashing input string to the recent line without prefixing the string. It finishes an action.
+- **SERIAL\_ACTION\_END(s)**: Continues by flashing input string to the recent line without prefixing the string but with new line. It finishes an action.
+- **SERIAL\_ACTION\_END\_CHAIN(s)**: Continues by flashing input string to the recent line without prefixing the string as well as new line. It finishes an action with possibility to continue in chaining.
 - **SERIAL\_VALUE(k, v)**: Flashes and prints the first string parameter (key) and follows it with second parameter (value) with EOL, e.g., `SEND_VALUE("Value", 85)`. The macro adds colon and space after the first parameter and forms key-value pair output.
 - **SERIAL\_VALUE\_UNIT(k, v, u)**: Flashes and prints the first string parameter (key), follows it with second parameter (value), and appends the third string parameter (unit) with EOL, e.g., `SEND_VALUE_UNIT("Value", 85, "degC")`. The macro adds colon and space after the first parameter, space before the last parameter, and forms key-value-unit output.
 
