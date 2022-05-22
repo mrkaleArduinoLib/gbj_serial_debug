@@ -1,12 +1,13 @@
 {
   "name": "gbj_serial_debug",
+  "version": "1.2.0",
   "keywords": "debug",
   "description": "Library defines preprocesor macro functions for serial debuging prefixed with 'SERIAL_'.",
   "repository": {
     "type": "git",
     "url": "https://github.com/mrkaleArduinoLib/gbj_serial_debug.git"
   },
-  "version": "1.2.0",
+  "license": "MIT",
   "frameworks": "arduino",
   "platforms": "*"
 }
