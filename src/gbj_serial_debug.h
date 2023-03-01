@@ -17,7 +17,7 @@
  */
 #ifndef GBJ_SERIAL_DEBUG_H
 #define GBJ_SERIAL_DEBUG_H
-#define GBJ_SERIAL_DEBUG_VERSION "GBJ_SERIAL_DEBUG 1.2.0"
+#define GBJ_SERIAL_DEBUG_VERSION "GBJ_SERIAL_DEBUG 1.3.0"
 
 #if defined(__AVR__)
   #include <Arduino.h>
@@ -41,6 +41,7 @@
     #define SERIAL_PREFIX ""
     #define SERIAL_SEPAR_H ""
   #endif
+  #define SERIAL_SEPAR_V SERIAL_F(": ")
 
   #define SERIAL_LOG1(p1)                                                      \
     {                                                                          \
@@ -152,11 +153,11 @@
     }
   #define SERIAL_VALUE(k, v)                                                   \
     {                                                                          \
-      SERIAL_LOG3(SERIAL_F(k), SERIAL_F(": "), v)                              \
+      SERIAL_LOG3(SERIAL_F(k), SERIAL_SEPAR_V, v)                              \
     }
   #define SERIAL_VALUE_UNIT(k, v, u)                                           \
     {                                                                          \
-      SERIAL_LOG5(SERIAL_F(k), SERIAL_F(": "), v, SERIAL_F(" "), SERIAL_F(u))  \
+      SERIAL_LOG5(SERIAL_F(k), SERIAL_SEPAR_V, v, SERIAL_F(" "), SERIAL_F(u))  \
     }
   #define SERIAL_DELIM                                                         \
     {                                                                          \
@@ -167,6 +168,13 @@
       Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
       Serial.print(SERIAL_SEPAR_H);                                            \
       Serial.print(SERIAL_F(s));                                               \
+    }
+  #define SERIAL_ACTION_VALUE(s)                                               \
+    {                                                                          \
+      Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
+      Serial.print(SERIAL_SEPAR_H);                                            \
+      Serial.print(SERIAL_F(s));                                               \
+      Serial.print(SERIAL_SEPAR_V);                                            \
     }
   #define SERIAL_ACTION_END(s)                                                 \
     {                                                                          \
@@ -202,9 +210,11 @@
   #define SERIAL_VALUE_UNIT(k, v, u)
   #define SERIAL_DELIM
   #define SERIAL_ACTION(s)
+  #define SERIAL_ACTION_VALUE(s)
   #define SERIAL_ACTION_END(s)
   #define SERIAL_ACTION_END_CHAIN(s)
   #define SERIAL_DOT
+  #define SERIAL_SEPAR_V
 #endif
 
 #endif
