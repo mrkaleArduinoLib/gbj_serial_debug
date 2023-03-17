@@ -6,7 +6,6 @@ Library defines preprocessor macro functions for serial debugging and writing to
 <a id="constants"></a>
 ## Constants
 
-- **GBJ\_SERIAL\_DEBUG\_VERSION**: Name and semantic version of the library.
 - **SERIAL\_NODEBUG**: Defining this macro determines, that serial debugging should not be used.
 - **SERIAL\_PREFIX**: Macro defines a string, that is prefixed to logging outputs with internally defined modul separator, which is `::`.
 - **SERIAL\_SEPAR\_V**: Macro defines a string, that suffixes a key in key-value constructs with internally defined value separator, which is `: `.
@@ -62,7 +61,8 @@ Library defines preprocessor macro functions for serial debugging and writing to
 - **SERIAL\_ACTION\_END(s)**: Continues by flashing input string to the recent line without prefixing the string but with new line. It finishes an action.
 - **SERIAL\_ACTION\_END\_CHAIN(s)**: Continues by flashing input string to the recent line without prefixing the string as well as new line. It finishes an action with possibility to continue in chaining.
 - **SERIAL\_VALUE(k, v)**: Flashes and prints the first string parameter (key) and follows it with second parameter (value) with EOL, e.g., `SEND_VALUE("Value", 85)`. The macro adds colon and space after the first parameter and forms key-value pair output.
-- **SERIAL\_VALUE\_UNIT(k, v, u)**: Flashes and prints the first string parameter (key), follows it with second parameter (value), and appends the third string parameter (unit) with EOL, e.g., `SEND_VALUE_UNIT("Value", 85, "degC")`. The macro adds colon and space after the first parameter, space before the last parameter, and forms key-value-unit output.
+- **SERIAL\_VALUE\_TELEPLOT(k, v)**: Output for `Teleplot` extension in _Microsoft Visual Source Code_. Flashes and prints the first string parameter (key) prefixed with character ">", suffixed with character ":" without space, and follows it with second parameter (value) with EOL, e.g., `SEND_VALUE_TELEPLOT("Value", 85)`, which outputs as ">Value:85".
+- **SERIAL\_VALUE\_UNIT(k, v, u)**: Flashes and prints the first string parameter (key), follows it with second parameter (value), and appends the third string parameter (unit) with EOL, e.g., `SEND_VALUE_UNIT("Value", 85, "°C")`. The macro adds colon and space after the first parameter, space before the last parameter, and forms key-value-unit output.
 
 
 #### Decoration macros
