@@ -158,6 +158,10 @@
     {                                                                          \
       SERIAL_LOG5(SERIAL_F(k), SERIAL_SEPAR_V, v, SERIAL_F(" "), SERIAL_F(u))  \
     }
+  #define SERIAL_VALUE_INDEX(i, k, v)                                          \
+    {                                                                          \
+      SERIAL_LOG5(i, SERIAL_F(". "), SERIAL_F(k), SERIAL_SEPAR_V, v)           \
+    }
   #define SERIAL_VALUE_TELEPLOT(k, v)                                          \
     {                                                                          \
       SERIAL_CHAIN4(SERIAL_F(">"), SERIAL_F(k), SERIAL_F(":"), v)              \
@@ -216,6 +220,7 @@
   #define SERIAL_DELIM
   #define SERIAL_ACTION(s)
   #define SERIAL_ACTION_VALUE(s)
+  #define SERIAL_VALUE_INDEX(s)
   #define SERIAL_ACTION_END(s)
   #define SERIAL_ACTION_END_CHAIN(s)
   #define SERIAL_DOT
