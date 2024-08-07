@@ -1,0 +1,16 @@
+---
+BasedOnStyle: Mozilla
+UseTab: Never
+IndentWidth: 2
+TabWidth: 2
+BreakBeforeBraces: Allman
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: true
+ColumnLimit: 80
+AlignAfterOpenBracket: Align
+IndentPPDirectives: BeforeHash
+PointerAlignment: Right
+AlwaysBreakAfterReturnType: None
+AlwaysBreakAfterDefinitionReturnType: None
+SpacesBeforeTrailingComments: 1
+AlignTrailingComments: false

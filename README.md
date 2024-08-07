@@ -36,6 +36,11 @@ Library defines preprocessor macro functions for serial debugging and writing to
 - **SERIAL\_F(s)**: Places string to the flash memory if the platform allows it, e.g., `send(SERIAL_F("Text"));`.
 
 
+#### Output macros
+- **SERIAL\_PRINT(p)**: Wrapper for system `Serial.print`. Usable for outputting string variable.
+- **SERIAL\_PRINTLN(p)**: Wrapper for system `Serial.println`. Usable for outputting string variable.
+
+
 #### Login macros
 - **SERIAL\_LOG1(p1)**: Prints one parameter on the separate line with EOL (end of line), e.g., `SEND_LOG1(123)`.
 - **SERIAL\_LOG2(p1, p2)**: Prints both parameters on one separate line with EOL after the very last parameter, e.g., `SEND_LOG2("T=", 123)`.

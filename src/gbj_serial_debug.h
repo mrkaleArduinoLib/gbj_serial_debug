@@ -42,6 +42,16 @@
   #endif
   #define SERIAL_SEPAR_V SERIAL_F(": ")
 
+  #define SERIAL_PRINT(p)                                                      \
+    {                                                                          \
+      Serial.print(p);                                                      \
+    }
+
+  #define SERIAL_PRINTLN(p)                                                      \
+    {                                                                          \
+      Serial.println(p);                                                      \
+    }
+
   #define SERIAL_LOG1(p1)                                                      \
     {                                                                          \
       Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
@@ -197,6 +207,9 @@
       Serial.print(SERIAL_F("."));                                             \
     }
 #else
+  #define SERIAL_PRINT(p)
+  #define SERIAL_PRINTLN(p)
+  //
   #define SERIAL_LOG1(p1)
   #define SERIAL_LOG2(p1, p2)
   #define SERIAL_LOG3(p1, p2, p3)
