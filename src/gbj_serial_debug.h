@@ -42,9 +42,13 @@
   #endif
   #define SERIAL_SEPAR_V SERIAL_F(": ")
 
-  #define SERIAL_PRINTLN(p)                                                      \
+  #define SERIAL_PRINTLN(p)                                                    \
     {                                                                          \
-      Serial.println(p);                                                      \
+      Serial.println(p);                                                       \
+    }
+  #define SERIAL_PRINTLN_FMT(p, f)                                             \
+    {                                                                          \
+      Serial.println(p, f);                                                    \
     }
 
   #define SERIAL_LOG1(p1)                                                      \
@@ -52,6 +56,12 @@
       Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
       Serial.print(SERIAL_SEPAR_H);                                            \
       Serial.println(p1);                                                      \
+    }
+  #define SERIAL_LOG1_FMT(p1, f)                                               \
+    {                                                                          \
+      Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
+      Serial.print(SERIAL_SEPAR_H);                                            \
+      Serial.println(p1, f);                                                   \
     }
   #define SERIAL_LOG2(p1, p2)                                                  \
     {                                                                          \
@@ -151,27 +161,22 @@
       };                                                                       \
       SERIAL_LINE                                                              \
     }
-  #define SERIAL_TITLE(s)                                                      \
+  #define SERIAL_TITLE(s) { SERIAL_LOG1(SERIAL_F(s)) }
+  #define SERIAL_VALUE(k, v) { SERIAL_LOG3(SERIAL_F(k), SERIAL_SEPAR_V, v) }
+  #define SERIAL_VALUE_FMT(k, v, f)                                            \
     {                                                                          \
-      SERIAL_LOG1(SERIAL_F(s))                                                 \
-    }
-  #define SERIAL_VALUE(k, v)                                                   \
-    {                                                                          \
-      SERIAL_LOG3(SERIAL_F(k), SERIAL_SEPAR_V, v)                              \
+      Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
+      Serial.print(SERIAL_SEPAR_H);                                            \
+      Serial.print(SERIAL_F(k));                                               \
+      Serial.print(SERIAL_SEPAR_V);                                            \
+      Serial.println(v, f);                                                    \
     }
   #define SERIAL_VALUE_UNIT(k, v, u)                                           \
-    {                                                                          \
-      SERIAL_LOG5(SERIAL_F(k), SERIAL_SEPAR_V, v, SERIAL_F(" "), SERIAL_F(u))  \
-    }
+    { SERIAL_LOG5(SERIAL_F(k), SERIAL_SEPAR_V, v, SERIAL_F(" "), SERIAL_F(u)) }
   #define SERIAL_VALUE_INDEX(i, k, v)                                          \
-    {                                                                          \
-      SERIAL_LOG5(i, SERIAL_F(". "), SERIAL_F(k), SERIAL_SEPAR_V, v)           \
-    }
+    { SERIAL_LOG5(i, SERIAL_F(". "), SERIAL_F(k), SERIAL_SEPAR_V, v) }
   #define SERIAL_VALUE_TELEPLOT(k, v)                                          \
-    {                                                                          \
-      SERIAL_CHAIN4(SERIAL_F(">"), SERIAL_F(k), SERIAL_F(":"), v)              \
-      SERIAL_LINE                                                              \
-    }
+    { SERIAL_CHAIN4(SERIAL_F(">"), SERIAL_F(k), SERIAL_F(":"), v) SERIAL_LINE }
   #define SERIAL_DELIM                                                         \
     {                                                                          \
       Serial.println(SERIAL_F("---"));                                         \
@@ -202,10 +207,11 @@
       Serial.print(SERIAL_F("."));                                             \
     }
 #else
-  #define SERIAL_PRINT(p)
   #define SERIAL_PRINTLN(p)
+  #define SERIAL_PRINTLN_FMT(p, f)
   //
   #define SERIAL_LOG1(p1)
+  #define SERIAL_LOG1_FMT(p1, f)
   #define SERIAL_LOG2(p1, p2)
   #define SERIAL_LOG3(p1, p2, p3)
   #define SERIAL_LOG4(p1, p2, p3, p4)
@@ -223,6 +229,7 @@
   #define SERIAL_BEGIN(b)
   #define SERIAL_TITLE(s)
   #define SERIAL_VALUE(k, v)
+  #define SERIAL_VALUE_FMT(k, v, f)
   #define SERIAL_VALUE_UNIT(k, v, u)
   #define SERIAL_VALUE_TELEPLOT(k, v)
   #define SERIAL_DELIM
