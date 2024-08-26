@@ -42,11 +42,6 @@
   #endif
   #define SERIAL_SEPAR_V SERIAL_F(": ")
 
-  #define SERIAL_PRINT(p)                                                      \
-    {                                                                          \
-      Serial.print(p);                                                      \
-    }
-
   #define SERIAL_PRINTLN(p)                                                      \
     {                                                                          \
       Serial.println(p);                                                      \

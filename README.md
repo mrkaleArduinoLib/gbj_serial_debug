@@ -37,7 +37,6 @@ Library defines preprocessor macro functions for serial debugging and writing to
 
 
 #### Output macros
-- **SERIAL\_PRINT(p)**: Wrapper for system `Serial.print`. Usable for outputting string variable.
 - **SERIAL\_PRINTLN(p)**: Wrapper for system `Serial.println`. Usable for outputting string variable.
 
 
