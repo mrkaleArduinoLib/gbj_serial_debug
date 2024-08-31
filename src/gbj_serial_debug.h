@@ -46,10 +46,12 @@
     {                                                                          \
       Serial.println(p);                                                       \
     }
-  #define SERIAL_PRINTLN_FMT(p, f)                                             \
-    {                                                                          \
-      Serial.println(p, f);                                                    \
-    }
+  #if defined(ESP32)
+    #define SERIAL_PRINTLN_FMT(p, f)                                           \
+      {                                                                        \
+        Serial.println(p, f);                                                  \
+      }
+  #endif
 
   #define SERIAL_LOG1(p1)                                                      \
     {                                                                          \
@@ -57,12 +59,14 @@
       Serial.print(SERIAL_SEPAR_H);                                            \
       Serial.println(p1);                                                      \
     }
-  #define SERIAL_LOG1_FMT(p1, f)                                               \
-    {                                                                          \
-      Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
-      Serial.print(SERIAL_SEPAR_H);                                            \
-      Serial.println(p1, f);                                                   \
-    }
+  #if defined(ESP32)
+    #define SERIAL_LOG1_FMT(p1, f)                                             \
+      {                                                                        \
+        Serial.print(SERIAL_F(SERIAL_PREFIX));                                 \
+        Serial.print(SERIAL_SEPAR_H);                                          \
+        Serial.println(p1, f);                                                 \
+      }
+  #endif
   #define SERIAL_LOG2(p1, p2)                                                  \
     {                                                                          \
       Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
@@ -163,14 +167,16 @@
     }
   #define SERIAL_TITLE(s) { SERIAL_LOG1(SERIAL_F(s)) }
   #define SERIAL_VALUE(k, v) { SERIAL_LOG3(SERIAL_F(k), SERIAL_SEPAR_V, v) }
-  #define SERIAL_VALUE_FMT(k, v, f)                                            \
-    {                                                                          \
-      Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
-      Serial.print(SERIAL_SEPAR_H);                                            \
-      Serial.print(SERIAL_F(k));                                               \
-      Serial.print(SERIAL_SEPAR_V);                                            \
-      Serial.println(v, f);                                                    \
-    }
+  #if defined(ESP32)
+    #define SERIAL_VALUE_FMT(k, v, f)                                          \
+      {                                                                        \
+        Serial.print(SERIAL_F(SERIAL_PREFIX));                                 \
+        Serial.print(SERIAL_SEPAR_H);                                          \
+        Serial.print(SERIAL_F(k));                                             \
+        Serial.print(SERIAL_SEPAR_V);                                          \
+        Serial.println(v, f);                                                  \
+      }
+  #endif
   #define SERIAL_VALUE_UNIT(k, v, u)                                           \
     { SERIAL_LOG5(SERIAL_F(k), SERIAL_SEPAR_V, v, SERIAL_F(" "), SERIAL_F(u)) }
   #define SERIAL_VALUE_INDEX(i, k, v)                                          \
@@ -208,10 +214,14 @@
     }
 #else
   #define SERIAL_PRINTLN(p)
-  #define SERIAL_PRINTLN_FMT(p, f)
+  #if defined(ESP32)
+    #define SERIAL_PRINTLN_FMT(p, f)
+  #endif
   //
   #define SERIAL_LOG1(p1)
-  #define SERIAL_LOG1_FMT(p1, f)
+  #if defined(ESP32)
+    #define SERIAL_LOG1_FMT(p1, f)
+  #endif
   #define SERIAL_LOG2(p1, p2)
   #define SERIAL_LOG3(p1, p2, p3)
   #define SERIAL_LOG4(p1, p2, p3, p4)
@@ -229,7 +239,9 @@
   #define SERIAL_BEGIN(b)
   #define SERIAL_TITLE(s)
   #define SERIAL_VALUE(k, v)
-  #define SERIAL_VALUE_FMT(k, v, f)
+  #if defined(ESP32)
+    #define SERIAL_VALUE_FMT(k, v, f)
+  #endif
   #define SERIAL_VALUE_UNIT(k, v, u)
   #define SERIAL_VALUE_TELEPLOT(k, v)
   #define SERIAL_DELIM
