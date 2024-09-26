@@ -183,10 +183,8 @@
     { SERIAL_LOG5(i, SERIAL_F(". "), SERIAL_F(k), SERIAL_SEPAR_V, v) }
   #define SERIAL_VALUE_TELEPLOT(k, v)                                          \
     { SERIAL_CHAIN4(SERIAL_F(">"), SERIAL_F(k), SERIAL_F(":"), v) SERIAL_LINE }
-  #define SERIAL_DELIM                                                         \
-    {                                                                          \
-      Serial.println(SERIAL_F("---"));                                         \
-    }
+  #define SERIAL_CHANGE(k, o, n)                                               \
+    { SERIAL_LOG5(SERIAL_F(k), SERIAL_SEPAR_V, o, SERIAL_F(" -> "), n) }
   #define SERIAL_ACTION(s)                                                     \
     {                                                                          \
       Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
@@ -208,11 +206,16 @@
     {                                                                          \
       Serial.print(SERIAL_F(s));                                               \
     }
+  #define SERIAL_DELIM                                                         \
+    {                                                                          \
+      Serial.println(SERIAL_F("---"));                                         \
+    }
   #define SERIAL_DOT                                                           \
     {                                                                          \
       Serial.print(SERIAL_F("."));                                             \
     }
 #else
+  #define SERIAL_SEPAR_V
   #define SERIAL_PRINTLN(p)
   #if defined(ESP32)
     #define SERIAL_PRINTLN_FMT(p, f)
@@ -244,14 +247,14 @@
   #endif
   #define SERIAL_VALUE_UNIT(k, v, u)
   #define SERIAL_VALUE_TELEPLOT(k, v)
-  #define SERIAL_DELIM
+  #define SERIAL_CHANGE(k, o, n)
   #define SERIAL_ACTION(s)
   #define SERIAL_ACTION_VALUE(s)
   #define SERIAL_VALUE_INDEX(s)
   #define SERIAL_ACTION_END(s)
   #define SERIAL_ACTION_END_CHAIN(s)
+  #define SERIAL_DELIM
   #define SERIAL_DOT
-  #define SERIAL_SEPAR_V
 #endif
 
 #endif
