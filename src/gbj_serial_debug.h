@@ -250,7 +250,7 @@
   #define SERIAL_CHANGE(k, o, n)
   #define SERIAL_ACTION(s)
   #define SERIAL_ACTION_VALUE(s)
-  #define SERIAL_VALUE_INDEX(s)
+  #define SERIAL_VALUE_INDEX(i, k, v)
   #define SERIAL_ACTION_END(s)
   #define SERIAL_ACTION_END_CHAIN(s)
   #define SERIAL_DELIM
