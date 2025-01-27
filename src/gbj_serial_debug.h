@@ -168,6 +168,15 @@
   #define SERIAL_TITLE(s) { SERIAL_LOG1(SERIAL_F(s)) }
   #define SERIAL_KEYVAL(k, v) { SERIAL_LOG3(k, SERIAL_SEPAR_V, v) }
   #define SERIAL_VALUE(k, v) { SERIAL_LOG3(SERIAL_F(k), SERIAL_SEPAR_V, v) }
+  #define SERIAL_VALUE_HEX(k, v)                                               \
+    {                                                                          \
+      Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
+      Serial.print(SERIAL_SEPAR_H);                                            \
+      Serial.print(SERIAL_F(k));                                               \
+      Serial.print(SERIAL_SEPAR_V);                                            \
+      Serial.print(SERIAL_F("0x"));                                            \
+      Serial.println(v, HEX);                                                  \
+    }
   #define SERIAL_VALUE_VALUE(k1, v1, k2, v2)                                   \
     { SERIAL_LOG6(                                                             \
       SERIAL_F(k1), SERIAL_SEPAR_V, v1, SERIAL_F(k2), SERIAL_SEPAR_V, v2) }
@@ -247,9 +256,10 @@
   #define SERIAL_TITLE(s)
   #define SERIAL_KEYVAL(k, v)
   #define SERIAL_VALUE(k, v)
+  #define SERIAL_VALUE_HEX(k, v)
   #define SERIAL_VALUE_VALUE(k1, v1, k2, v2)
-  #if defined (ESP32)
-  #define SERIAL_VALUE_FMT(k, v, f)
+  #if defined(ESP32)
+    #define SERIAL_VALUE_FMT(k, v, f)
   #endif
   #define SERIAL_VALUE_UNIT(k, v, u)
   #define SERIAL_VALUE_TELEPLOT(k, v)
