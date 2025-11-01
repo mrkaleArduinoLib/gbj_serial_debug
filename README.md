@@ -75,6 +75,7 @@ Library defines preprocessor macro functions for serial debugging and writing to
 #### Decoration macros
 - **SERIAL\_LINE**: Prints empty line with EOL separating printing sections.
 - **SERIAL\_DELIM**: Flashes and prints three dashes as a delimiter line and EOL for visual separating printing sections.
+- **SERIAL\_DELIM\_END**: Flashes and prints end delimiter line for visual finishing a program, e.g., example.
 - **SERIAL\_DOT**: Flashes and prints dot without EOL for mimicking waiting for long lasting actions.
 
 

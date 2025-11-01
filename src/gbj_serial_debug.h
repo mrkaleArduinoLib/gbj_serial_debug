@@ -223,6 +223,12 @@
     {                                                                          \
       Serial.println(SERIAL_F("---"));                                         \
     }
+  #define SERIAL_DELIM_END                                                     \
+    {                                                                          \
+      Serial.print(SERIAL_F("==="));                                           \
+      Serial.print(SERIAL_F("END"));                                           \
+      Serial.println(SERIAL_F("==="));                                         \
+    }
   #define SERIAL_DOT                                                           \
     {                                                                          \
       Serial.print(SERIAL_F("."));                                             \
@@ -270,6 +276,7 @@
   #define SERIAL_ACTION_END(s)
   #define SERIAL_ACTION_END_CHAIN(s)
   #define SERIAL_DELIM
+  #define SERIAL_DELIM_END
   #define SERIAL_DOT
 #endif
 
