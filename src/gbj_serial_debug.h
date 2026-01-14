@@ -112,6 +112,18 @@
       Serial.print(p5);                                                        \
       Serial.println(p6);                                                      \
     }
+  #define SERIAL_LOG7(p1, p2, p3, p4, p5, p6, p7)                                  \
+    {                                                                          \
+      Serial.print(SERIAL_F(SERIAL_PREFIX));                                   \
+      Serial.print(SERIAL_SEPAR_H);                                            \
+      Serial.print(p1);                                                        \
+      Serial.print(p2);                                                        \
+      Serial.print(p3);                                                        \
+      Serial.print(p4);                                                        \
+      Serial.print(p5);                                                        \
+      Serial.print(p6);                                                      \
+      Serial.println(p7);                                                      \
+    }
   //
   #define SERIAL_CHAIN1(p1)                                                    \
     {                                                                          \
@@ -151,6 +163,16 @@
       Serial.print(p4);                                                        \
       Serial.print(p5);                                                        \
       Serial.print(p6);                                                        \
+    }
+  #define SERIAL_CHAIN7(p1, p2, p3, p4, p5, p6, p7)                                \
+    {                                                                          \
+      Serial.print(p1);                                                        \
+      Serial.print(p2);                                                        \
+      Serial.print(p3);                                                        \
+      Serial.print(p4);                                                        \
+      Serial.print(p5);                                                        \
+      Serial.print(p6);                                                        \
+      Serial.print(p7);                                                        \
     }
   //
   #define SERIAL_LINE                                                          \
@@ -194,6 +216,14 @@
     { SERIAL_LOG5(SERIAL_F(k), SERIAL_SEPAR_V, v, SERIAL_F(" "), SERIAL_F(u)) }
   #define SERIAL_VALUE_INDEX(i, k, v)                                          \
     { SERIAL_LOG5(i, SERIAL_F(". "), SERIAL_F(k), SERIAL_SEPAR_V, v) }
+  #define SERIAL_VALUE_INDEX_UNIT(i, k, v, u)                                  \
+    { SERIAL_LOG7(i,                                                           \
+                  SERIAL_F(". "),                                              \
+                  SERIAL_F(k),                                                 \
+                  SERIAL_SEPAR_V,                                              \
+                  v,                                                           \
+                  SERIAL_F(" "),                                               \
+                  SERIAL_F(u)) }
   #define SERIAL_VALUE_TELEPLOT(k, v)                                          \
     { SERIAL_CHAIN4(SERIAL_F(">"), SERIAL_F(k), SERIAL_F(":"), v) SERIAL_LINE }
   #define SERIAL_CHANGE(k, o, n)                                               \
@@ -249,6 +279,7 @@
   #define SERIAL_LOG4(p1, p2, p3, p4)
   #define SERIAL_LOG5(p1, p2, p3, p4, p5)
   #define SERIAL_LOG6(p1, p2, p3, p4, p5, p6)
+  #define SERIAL_LOG7(p1, p2, p3, p4, p5, p6, p7)
   //
   #define SERIAL_CHAIN1(p1)
   #define SERIAL_CHAIN2(p1, p2)
@@ -256,6 +287,7 @@
   #define SERIAL_CHAIN4(p1, p2, p3, p4)
   #define SERIAL_CHAIN5(p1, p2, p3, p4, p5)
   #define SERIAL_CHAIN6(p1, p2, p3, p4, p5, p6)
+  #define SERIAL_CHAIN7(p1, p2, p3, p4, p5, p6, p7)
   //
   #define SERIAL_LINE
   #define SERIAL_BEGIN(b)
@@ -273,6 +305,7 @@
   #define SERIAL_ACTION(s)
   #define SERIAL_ACTION_VALUE(s)
   #define SERIAL_VALUE_INDEX(i, k, v)
+  #define SERIAL_VALUE_INDEX_UNIT(i, k, v, u)
   #define SERIAL_ACTION_END(s)
   #define SERIAL_ACTION_END_CHAIN(s)
   #define SERIAL_DELIM
